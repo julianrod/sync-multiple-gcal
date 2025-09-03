@@ -107,6 +107,11 @@ function createEvents(startTime, endTime) {
     }
 
     events.items.forEach((event) => {
+ // Skip events already synced (contain the marker)
+  if (event.summary && event.summary.includes(SEARCH_CHARACTER)) {
+    return
+  }
+
       // Don't copy "free" events.
       if (event.transparency && event.transparency === "transparent") {
         return
