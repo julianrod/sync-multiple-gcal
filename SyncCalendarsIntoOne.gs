@@ -11,7 +11,7 @@ const CALENDAR_TO_MERGE_INTO = "shared-calendar-id@gmail.com"
 
 // Number of days in the past and future to sync.
 const SYNC_DAYS_IN_PAST = 7
-const SYNC_DAYS_IN_FUTURE = 30
+const SYNC_DAYS_IN_FUTURE = 15
 
 // Default title for events that don't have a title.
 const DEFAULT_EVENT_TITLE = "Busy"
@@ -107,10 +107,11 @@ function createEvents(startTime, endTime) {
     }
 
     events.items.forEach((event) => {
- // Skip events already synced (contain the marker)
-  if (event.summary && event.summary.includes(SEARCH_CHARACTER)) {
-    return
-  }
+      // Skip events already synced (contain the marker)
+     if (event.summary && event.summary.includes(SEARCH_CHARACTER)) {
+       return
+      }
+
 
       // Don't copy "free" events.
       if (event.transparency && event.transparency === "transparent") {
@@ -118,9 +119,9 @@ function createEvents(startTime, endTime) {
       }
 
       // If event.summary is undefined, empty, or null, set it to default title
-      if (!event.summary || event.summary === "") {
-        event.summary = DEFAULT_EVENT_TITLE
-      }
+//      if (!event.summary || event.summary === "") {
+        event.summary = `${SEARCH_CHARACTER}${DEFAULT_EVENT_TITLE}`
+//      }
 
       requestBody.push({
         method: "POST",
