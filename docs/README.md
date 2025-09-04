@@ -10,21 +10,23 @@ This is useful for a collective Busy/Free Calendar or Google Home integration.
 
 1. Make sure every calendar you want sync is shared with the account that holds the shared calendar.
 
-2. Log into the account that holds the shared calendar and go to the [Google Apps Scripts] website.
+VERY IMPORTANT: You need to grant permission to see all event details, not just busy/free, if you want to sync one calendar with another and that other with the first one, in order for it not to duplicate events.
 
-3. Click on "New Project".
+4. Log into the account that holds the shared calendar and go to the [Google Apps Scripts] website.
 
-4. Replace everything in `Code.gs` with the contents of [SyncCalendarsIntoOne.gs].
+5. Click on "New Project".
 
-5. Create a new script file called `BatchRequests.gs` with the contents of [BatchRequests.gs]
+6. Replace everything in `Code.gs` with the contents of [SyncCalendarsIntoOne.gs].
 
-6. Update `calendarsToMerge`, `calendarToMergeInto`, `SYNC_DAYS_IN_PAST`, and `SYNC_DAYS_IN_FUTURE` variables. Be sure to save.
+7. Create a new script file called `BatchRequests.gs` with the contents of [BatchRequests.gs]
 
-7. Click the `Project Settings` Gear icon on the left panel. Check the `Show "appsscript.json" manifest file in editor`. Go back to code editor on the left, and update its content with [appsscript.json].
+8. Update `calendarsToMerge`, `calendarToMergeInto`, `SYNC_DAYS_IN_PAST`, and `SYNC_DAYS_IN_FUTURE` variables. Be sure to save.
 
-8. Click `Run`. This will load the `Authorization required` window since it's your first time running the script. Click on `Review permissions` and give it permission to your account.
+9. Click the `Project Settings` Gear icon on the left panel. Check the `Show "appsscript.json" manifest file in editor`. Go back to code editor on the left, and update its content with [appsscript.json].
 
-9. Click on `Triggers` clock icon on the left panel to add a trigger. Click on `Add Trigger`.
+10. Click `Run`. This will load the `Authorization required` window since it's your first time running the script. Click on `Review permissions` and give it permission to your account.
+
+11. Click on `Triggers` clock icon on the left panel to add a trigger. Click on `Add Trigger`.
 
    - You have two choices, "Time-driven" or "From calendar".
    - Time-driven will run every X minutes/hours/etc. Use this if you have calendars that update frequently (more than 5-10 times in a 15 minute timespan)
@@ -47,7 +49,7 @@ This is useful for a collective Busy/Free Calendar or Google Home integration.
      - Click "Save"
      - Repeat these steps for every calendar you're merging _from_.
 
-10. Enjoy!
+11. Enjoy!
 
 ## Notes
 
